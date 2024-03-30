@@ -1,0 +1,35 @@
+<div class="bg-image ">
+    <div class="container vh-100 ">
+        <div class="card shadow watery-overlay">
+
+            <div class="m-4">
+                <h3 class="text-center capitalize">X-School</h3>
+            </div>
+            <form>
+                <div class="text-center my-3 mx-5">
+               
+                   <input type="email" name="email" [(ngModel)]="email" placeholder="Email Adress" class="form-control custom-input "> 
+        
+                </div>
+                <div class="text-center my-3 mx-5">
+                   
+                <input type="password" name="password" [(ngModel)]="password" placeholder="Password" class="form-control custom-input ">
+                </div>
+                <div class="text-center  ">
+                    <button type="button" (click)="login()" class="btn btn-dark justify-content-center">Login</button>
+    
+                </div>
+                
+                
+                
+                <div class="text-center button ">
+                    <a href="/register" class="text-decoration-none link">Need Account   <span class="">Register</span></a>
+                </div>
+            </form>
+    
+        </div>
+
+    </div>
+    
+
+</div>

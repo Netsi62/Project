@@ -1,0 +1,55 @@
+<div class="bg-image" >
+    <div class="container vh-100" >
+        <div class="card shadow watery-overlay">
+            <div class="m-4">
+                <h3 class="text-center capitalize">Register Here</h3>
+            </div>
+            <div class="container mt-5">
+                <form >
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control custom-input" id="fullName" placeholder="Enter Full Name" [(ngModel)]="fullName" name="fullName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control custom-input" id="dob" [(ngModel)]="dob" name="dob" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control custom-input" id="gender" [(ngModel)]="gender" name="gender" required>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control custom-input" id="city" placeholder="Enter City" [(ngModel)]="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control custom-input" id="address" rows="3" placeholder="Address" [(ngModel)]="address" name="address" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" class="form-control custom-input" id="phoneNumber" placeholder="Enter Phone Number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control custom-input" id="email" placeholder="Enter Email" [(ngModel)]="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control custom-input" id="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="emergencyContact">Emergency Contact Information</label>
+                    <textarea class="form-control custom-input" id="emergencyContact" rows="3" placeholder="Emergency Contact Information" [(ngModel)]="emergencyContact" name="emergencyContact" required></textarea>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary m-3"(click)="adduser()" >Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

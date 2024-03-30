@@ -1,0 +1,94 @@
+<!-- dashbord.component.html -->
+
+  
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form>
+                <h3>Add Semester</h3>
+                <div>
+                    <label class="form-label">semester</label>
+                    <input type="text" class="form-control" [(ngModel)]="semesterName" name="semesterName">
+                </div>
+                <div>
+                    <label class="form-label">Start Date</label>
+                    <input class="form-control" type="date" [(ngModel)]="startDate" name="startDate">
+                </div>
+                <div>
+                    <label class="form-label">End Date</label>
+                    <input class="form-control" type="date" [(ngModel)]="endDate" name="endDate">
+                </div>
+                <div>
+                    <label class="form-label">Year</label>
+                    <input class="form-control" type="number" [(ngModel)]="Year" name="endDate">
+                </div>
+                <div>
+                    <button class="btn btn-success my-4" (click)="addsemester()">Add Semester</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Year</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let semester of semester">
+                        
+                        <td>
+                            <div *ngIf="!semester.editMode">{{semester.semesterName}}</div>
+                            <div *ngIf="semester.editMode">
+                              <input type="text" class="form-control" [(ngModel)]="semester.semesterName" name="semesterName">
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngIf="!semester.editMode">
+                                {{semester.Year}}
+                            </div>
+                            <div *ngIf="semester.editMode">
+                                <input type="text" class="form-control" [(ngModel)]="semester.Year" name="semesterYear">
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngIf="!semester.editMode">{{semester.startDate}}</div>
+                            <div *ngIf="semester.editMode">
+                              <input class="form-control" type="date" [(ngModel)]="semester.startDate" name="startDate">
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngIf="!semester.editMode">{{semester.endDate}}</div>
+                            <div *ngIf="semester.editMode">
+                              <input class="form-control" type="date" [(ngModel)]="semester.endDate" name="endDate">
+                            </div>
+                          </td>
+                          <td>
+                            <button class="btn btn-success" (click)="toggleEdit(semester)">
+                              {{semester.editMode ? 'Cancel' : 'Update Semester'}}
+                            </button>
+                            <button *ngIf="semester.editMode" class="btn btn-primary" (click)="updateSemester(semester)">Save</button>
+                          </td>
+                          <td >
+                            <button class="btn btn-danger " (click)="deletesemester (semester)">Delete</button>
+                          </td>
+                          
+                          
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+</div>
+
+
+
+
+

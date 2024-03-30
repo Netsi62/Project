@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-10  my-4" *ngFor="let course of courses">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="text-uppercase card-title">Course Name: <span class="text-success">{{ course.course_name }}</span></h5>
+                    <p class="card-text fw-bold text-uppercase">Semester: <span class="text-success">{{ course.semesterName }}</span></p>
+                    <p class="card-text">Description: <span class="text-success">{{ course.description }}</span></p>
+                  
+                    <p class="card-text">Year: <span class="text-success">{{ course.selectedSemesterYear}}</span></p>
+                    <div class="d-flex justify-content-end">
+                        <a (click)="navigateToRegistration(course.id)" class="text-decoration-none card-link btn btn-secondary">Register</a>
+                        <a (click)="navigateToGrade(course.id)" class="text-decoration-none card-link btn btn-secondary mx-1">Grade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

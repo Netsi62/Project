@@ -1,0 +1,20 @@
+<div class="container mb-4 p-3" *ngIf="courseObj">
+    <div class="row">
+      <div class="col-10">
+        <h1 class="text-success">{{ courseObj.course_name }}</h1>
+        <p>{{ courseObj.description }}</p>
+      </div>
+     
+    </div>
+  </div>
+
+
+
+<div *ngIf="courseObj">
+    <h1>{{ courseObj.course_name }}</h1>
+    <p></p>
+  </div>
+  
+  
+<app-menu></app-menu>
+<router-outlet></router-outlet>

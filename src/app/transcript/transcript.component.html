@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- Other content -->
+
+  <div class="container row" *ngIf="studentGrades.length > 0">
+    <ng-container *ngFor="let semester of semesterNames; let i = index">
+      <div class="col-6" *ngIf="filterGradesBySemester(semester).length > 0">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card-body">
+              <h2>Semester: {{ semester }} (Year: {{ getYearForSemester(semester) }})</h2> <!-- Displaying year alongside the semester -->
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Grade</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Filter grades for the current semester -->
+                    <tr *ngFor="let grade of filterGradesBySemester(semester)">
+                      <td>{{ getCourseName(grade.courseId) }}</td>
+                      <td>{{ getGrade(grade) }}</td>
+
+                    </tr>
+                  </tbody>
+                 
+                </table>
+
+                <P ><span class="text-primary fw-bold">GPA :</span> {{ getGPAForSemester(semester) }}</P>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Other content -->
+</div>

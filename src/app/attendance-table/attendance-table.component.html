@@ -1,0 +1,70 @@
+<div class="container">
+  <h2>Mark Attendance</h2>
+  <form>
+    <div class="form-group col-md-6 m-3">
+      <label for="course">Course:</label>
+      <select class="form-control border border-success" [(ngModel)]="selectedCourseId" name="course" (change)="updateSelectedCourseName()">
+        <option *ngFor="let course of courses" [value]="course.id">{{ course.course_name }}</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-6 m-3">
+        <label for="email">Email:</label>
+        <input class="form-control border border-success" id="email" [(ngModel)]="selectedEmail" name="email">
+      </div>
+      <div class="form-group col-md-6 m-3">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control border border-success" id="date" [(ngModel)]="selectedDate" name="date">
+      </div>
+    </div>
+    <div class="form-group col-md-6 m-3">
+      <label for="instructor">Instructor Name:</label>
+      <input class="form-control border border-success" id="instructor" [(ngModel)]="instructorName" name="instructor">
+    </div>
+    
+    <div class="form-group col-md-6 m-3">
+      <label for="courseName">Course Name:</label>
+      <input class="form-control border border-success" id="courseName" [(ngModel)]="selectedCourseName" name="courseName">
+    </div>
+    
+    <div class="form-check m-3">
+      <input type="checkbox" class="m-2 border border-success" [checked]="checkbox2Checked" (change)="updateCheckboxes(2)" name="present">
+      <label for="checkbox2">Present</label>
+    </div>
+    <div class="form-check m-3">
+      <input type="checkbox" class="m-2 border border-success" [checked]="checkbox1Checked" (change)="updateCheckboxes(1)" name="absent">
+      <label for="checkbox1">Absent</label>
+    </div>
+    <button type="button" class="btn btn-success" (click)="saveData()">Submit</button>
+  </form>
+
+  <div *ngIf="studentAttendance.length > 0; else noRecords">
+    <h3>Attendance Records</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Student Email</th>
+          <th>Instructor Name</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendanceRecord of studentAttendance">
+          <td>{{ attendanceRecord.courseName }}</td>
+          <td>{{ attendanceRecord.userId }}</td>
+          <td>{{ attendanceRecord.instructor }}</td>
+          <td>{{ attendanceRecord.date }}</td>
+          <td>{{ attendanceRecord.status }}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noRecords>
+    <p>No attendance records found.</p>
+  </ng-template>
+</div>

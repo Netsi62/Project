@@ -1,0 +1,76 @@
+<div class="container m-5">
+  <h4 class="text-success">{{getCourseName(courseId)}}</h4>
+
+</div>
+        
+     
+  
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Add New Student</h3>
+  <form >
+    <div>
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="email" name="email" required class="form-control ">
+    </div>
+    <div>
+      <label>Department:</label>
+      <input type="text" [(ngModel)]="department" name="department" required class="form-control">
+    </div>
+    <button type="submit" (click)="addStudent()" class="btn btn-success m-4">Add Student</button>
+  </form>
+
+    </div>
+    
+
+    <div class="col-8">
+      <table class="table table-striped">
+        <thead>
+         <tr>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Action</th>
+         </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let student of studentList">
+              <td>{{student.email}}</td>
+              <td>{{ student.department }}</td>
+              <td>
+                <button class="btn btn-danger " (click)="deleteStudent(student)">Delete</button>
+              </td>
+              
+        
+            </tr>
+
+       
+          
+        </tbody>
+
+      </table>
+      
+      
+    </div>
+    
+  
+  
+  
+  
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- Add Student Form -->
+
+
+
+
+<p *ngIf="addError" style="color: red;">{{ addError }}</p>

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-10  my-4" *ngFor="let course of courses">
+            <div class="card shadow "  >
+                <div class="card-body">
+                    <h5 class=" text-uppercase card-title">{{ course.course_name }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <div class="d-flex justify-content-end ">
+                        <a (click)="navigateToGrade(course.id)" class="text-decoration-none card-link" class="btn btn-secondary">Grade</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

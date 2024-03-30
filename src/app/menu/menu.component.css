@@ -1,0 +1,28 @@
+.custom-nav {
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid #28a745; /* Bootstrap success color */
+  }
+
+  .custom-nav a {
+    text-decoration: none;
+    padding-bottom: 0.5rem;
+    color: #000; /* Default link color */
+    padding: 20px;
+  }
+
+  .custom-nav a.active {
+    border-bottom: 2px solid #fff; /* White bottom border for active link */
+    color: #28a745; /* White text color for active link */
+  }
+
+  .custom-nav a:not(.active):hover {
+    border-bottom: 2px solid #28a745; /* Green bottom border on hover */
+    color: #28a745; /* Green text color on hover */
+  }
+  .button{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    margin-top: 10px; 
+  }

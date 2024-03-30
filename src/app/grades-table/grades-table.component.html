@@ -1,0 +1,90 @@
+<div class="container">
+  <h4 class="text-capitalize"><span class="text-uppercase">semester :</span> {{ getSemesterName(courseId) }} course grade</h4>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Email</label>
+      <input type="email" [(ngModel)]="email" class="form-control">
+    </div>
+    <div class="col">
+      <label class="form-label">Quiz</label>
+      <input type="number" class="form-control" [(ngModel)]="quiz">
+    </div>
+    <div class="col">
+      <label>Assignment</label>
+      <input type="number" class="form-control" [(ngModel)]="assignment">
+    </div>
+    <div class="col">
+      <label>Exam</label>
+      <input type="number" class="form-control" [(ngModel)]="exam">
+    </div>
+   
+    <div class="col">
+      <button (click)="addGrade()" class="btn btn-success">Add Grade</button>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Course</th> 
+      <th scope="col">Semester</th>
+      <th scope="col">Email</th>
+      <th scope="col">Quiz</th>
+      <th scope="col">Assignment</th>
+      <th scope="col">Exam</th>
+      <th scope="col">Grade Total</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of studentArray; let i = index">
+
+      <td>{{ getCourseName(student.courseId) }}</td> 
+      <td>{{ getSemesterName(student.courseId) }}</td>
+      <td>
+        <div *ngIf="!student.editMode">{{student.email}}</div>
+        <input *ngIf="student.editMode" type="email" class="form-control" [(ngModel)]="student.email">
+      </td>
+      <td>
+        <div *ngIf="!student.editMode">{{student.quiz}}</div>
+        <input *ngIf="student.editMode" type="number" class="form-control" [(ngModel)]="student.quiz">
+      </td>
+      <td>
+        <div *ngIf="!student.editMode">{{student.Assignment}}</div>
+        <input *ngIf="student.editMode" type="number" class="form-control" [(ngModel)]="student.Assignment">
+      </td>
+      <td>
+        <div *ngIf="!student.editMode">{{student.Exam}}</div>
+        <input *ngIf="student.editMode" type="number" class="form-control" [(ngModel)]="student.Exam">
+      </td>
+     
+      <td><div>{{total(student)}}</div></td>
+      <td>
+        <div>{{onTotal(student)}}</div>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="deleteGrade(student)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

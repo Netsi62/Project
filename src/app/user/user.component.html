@@ -1,0 +1,27 @@
+<div class="container-fluid bg-light mb-4 p-3">
+    <div class="row" id="headContainer">
+      <div class="col">
+        <h1 class="text-success">Student</h1>
+      </div>
+      <div class="col d-flex justify-content-end align-items-center">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+
+            <a href="#" routerLink="studentCourse">StudentCourse</a>
+            |
+            <a href="#" routerLink="transcript">Transcript</a>
+            |
+            
+            <a href="#" > <button (click)="logout()" type="button" class="btn btn-success">LogOut</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+
+  </div>
+ 
+    
+

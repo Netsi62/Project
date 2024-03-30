@@ -1,0 +1,10 @@
+.no-border-input {
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+ 
+  .no-border-td {
+    border: none;
+  }

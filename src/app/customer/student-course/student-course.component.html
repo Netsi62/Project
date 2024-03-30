@@ -1,0 +1,162 @@
+<div *ngIf="currentUser">
+  <h4><span class="text-success"> Welcome:</span> {{ currentUser.email }}</h4>
+  <hr class="text-success">
+</div>
+
+<div *ngIf="RegisterUser">
+  <p><strong>Student ID:</strong> {{ RegisterUser.StudentId }}</p>
+</div>
+
+<div *ngIf="!currentUser">User not found</div>
+
+<div *ngIf="loading">
+  Loading...
+</div>
+
+<div *ngIf="error">
+  {{ error }}
+</div>
+
+
+
+
+
+<div class="container">
+  <h3 class="text-success my-4 mx-5">Registered courses</h3>
+  
+  <div *ngIf="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+
+  <table class="table table-striped" *ngIf="StudentUser && StudentUser.length > 0">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Course Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of StudentUser">
+        <td>{{ course.course_name }}</td>
+        <td>{{ course.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="!(loading || error || (StudentUser && StudentUser.length > 0))" class="text-muted my-4 mx-5">
+    No registered courses found.
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h3 class="text-success my-4 mx-5">Grade Report</h3>
+      <div class="card" *ngIf="studentGrades.length > 0">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Semester</th>
+                  <th>Quiz</th>
+                  <th>Assignment</th>
+                  <th>Exam</th>
+                  <th>Total</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let grade of studentGrades">
+                
+                  <td>{{ getCourseName(grade.courseId) }}</td> 
+                  <td>{{getSemesterName(grade.courseId)}}</td>
+                  <td>{{ grade.quiz }}</td>
+                  <td>{{ grade.Assignment }}</td>
+                  <td>{{ grade.Exam }}</td>
+                  <td>
+                    <div>{{ total(grade) }}</div>
+                  </td>
+                  <td>
+                    <div>{{ onTotal(grade) }}</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="studentGrades.length === 0">
+  No grades available.
+</div>
+
+<div *ngIf="loading">
+  Loading...
+</div>
+
+<div *ngIf="error">
+  {{ error }}
+</div>
+
+<div *ngIf="studentAttendance.length > 0" class="container">
+  <h3 class="text-success my-4 mx-5">Attendance Report</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Course  Name</th>
+        <th>Instructor name</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attendanceRecord of studentAttendance">
+        <td>{{attendanceRecord.courseName}}</td>
+        <td>{{attendanceRecord.instructor}}</td>
+        <td>{{ attendanceRecord.date }}</td>
+        <td>{{ attendanceRecord.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="studentAttendance.length === 0">
+  No attendance records available.
+</div>
