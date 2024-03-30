@@ -25,6 +25,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { TranscriptComponent } from './transcript/transcript.component';
 import { FilterBySemesterPipe } from './grades-table/filter-by-semester.pipe';
 import { Test2Component } from './test2/test2.component';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -53,9 +54,8 @@ import { Test2Component } from './test2/test2.component';
     AdminUserComponent,
     TranscriptComponent,
     FilterBySemesterPipe,
-    Test2Component
-
-   
+    Test2Component,
+    TestComponent   
   ],
   imports: [
     BrowserModule,
