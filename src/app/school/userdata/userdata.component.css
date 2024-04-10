@@ -1,0 +1,9 @@
+.img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+
+}
+.phone {
+    margin-top: 30px;
+}

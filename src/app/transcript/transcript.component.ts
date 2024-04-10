@@ -138,7 +138,11 @@ export class TranscriptComponent implements OnInit {
   fetchUserRegistration(email: string) {
     this.authService.getUserRegistrationByEmail(email).subscribe(
       register => {
-        this.registerUser = register;
+        if (register) {
+          this.registerUser = register;
+        } else {
+          this.registerUser = null; // Assign null when register is undefined
+        }
       },
       error => {
         this.error = 'Error fetching user registration details.';
@@ -146,6 +150,7 @@ export class TranscriptComponent implements OnInit {
       }
     );
   }
+  
 
   
 
@@ -201,11 +206,11 @@ export class TranscriptComponent implements OnInit {
     if (averageTotal >= 90) {
       return 4.0;
     } else if (averageTotal >= 75 && averageTotal < 90) {
-      return 3.0;
+      return 3.75;
     } else if (averageTotal >= 60 && averageTotal < 75) {
-      return 2.0;
+      return 2.50;
     } else if (averageTotal >= 45 && averageTotal < 60) {
-      return 1.0;
+      return 1.25;
     } else {
       return 0;
     }

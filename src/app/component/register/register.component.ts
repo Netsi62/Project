@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from 'src/app/shared/auth.service';
 import { RegisterService } from './register.service';
 import { Register } from 'src/app/model/register';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -24,6 +25,7 @@ export class RegisterComponent {
     emergencyContact : '',
     city : '',
     StudentId : '',
+    isAccepted : false,
   };
 
     id : string ='';
@@ -38,7 +40,7 @@ export class RegisterComponent {
     city : string = '';
     StudentId : string ='';
 
-  constructor(private auth: AuthService, private data: RegisterService) {}
+  constructor(private auth: AuthService, private data: RegisterService, private router : Router) {}
 
   adduser() {
     if (this.fullName == '') {
@@ -125,5 +127,9 @@ export class RegisterComponent {
         alert('something went wrong while retrieving users');
       }
     );
+  }
+  back(){
+    this.router.navigate(['/userdata'])
+
   }
 }

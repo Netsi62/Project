@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Accepted Student List</h3>
+        </div>
+    </div>
+    <div>
+        <div class="ro">
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>gender</th>
+                            <th>DoB</th>
+                            <th>Email</th>
+                            <th>Phone number</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>emergencyContact</th>
+                          
+    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of data; let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{user.fullName}}</td>
+                            <td>{{user.gender}}</td>
+                            <td>{{user.dob}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phoneNumber}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.city}}</td>
+                            <td>{{user.emergencyContact}}</td>
+                            
+                        </tr>
+                    </tbody>
+    
+                </table>
+        
+            </div>
+        </div>
+    </div>
+</div>

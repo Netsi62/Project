@@ -16,31 +16,48 @@ import { AttendanceTableComponent } from './attendance-table/attendance-table.co
 import { SemesterComponent } from './component/semester/semester.component';
 import { TranscriptComponent } from './transcript/transcript.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { SchoolComponent } from './school/school.component';
+import { UserdataComponent } from './school/userdata/userdata.component';
+import { ListComponent } from './list/list.component';
+import { AcceptedComponent } from './accepted/accepted.component';
 
 
 
 
 const routes: Routes = [
-
-  {path : '', redirectTo:'login', pathMatch:'full' },
+  
+  
+  {path : '', redirectTo:'choice', pathMatch:'full' },
+  {path : 'choice', component: SchoolComponent},
   {path:'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'userdata', component: UserdataComponent},
+  {path : 'register', component: RegisterComponent},
+
+  
+  
+  
+  
 
 
-  {path: '', component:UserComponent, children:[
+  {path: 'user', component:UserComponent, children:[
  
     {path:'studentCourse', component:StudentCourseComponent},
     {path: 'transcript', component: TranscriptComponent},
+   
+   
     
     
 
   ]},
 
   {path: '', component:AdminComponent, children:[
+    {path :'list', component: ListComponent},
     {path: 'dashboard', component: DashbordComponent},
     {path : 'semester', component:SemesterComponent},
     {path: 'user', component:AdminUserComponent},
    
+   
+    {path : 'accepted', component : AcceptedComponent},
     {path:'course', component:CourseComponent},
     {path: 'courseregistration/:id', component:RegistrationComponent},
     { path: 'courseDetail/:id', component: CourseDetailComponent},

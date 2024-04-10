@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DocumentSnapshot } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  async login() {
+  async login( ) {
     if (this.email == '') {
       alert('Please enter email');
       return;
@@ -36,4 +35,7 @@ export class LoginComponent implements OnInit {
       // Handle error as needed, e.g., display error message to the user
     }
   }
+
+
+  
 }
