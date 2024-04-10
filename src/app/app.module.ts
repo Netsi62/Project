@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,10 @@ import { TranscriptComponent } from './transcript/transcript.component';
 import { FilterBySemesterPipe } from './grades-table/filter-by-semester.pipe';
 import { Test2Component } from './test2/test2.component';
 import { TestComponent } from './test/test.component';
+import { SchoolComponent } from './school/school.component';
+import { UserdataComponent } from './school/userdata/userdata.component';
+import { ListComponent } from './list/list.component';
+import { AcceptedComponent } from './accepted/accepted.component';
 
 
 
@@ -55,13 +60,18 @@ import { TestComponent } from './test/test.component';
     TranscriptComponent,
     FilterBySemesterPipe,
     Test2Component,
-    TestComponent   
+    TestComponent,
+    SchoolComponent,
+    UserdataComponent,
+    ListComponent,
+    AcceptedComponent   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(enviroment.firebase),
     FormsModule,
+    AngularFireStorageModule,
    
     
   ],

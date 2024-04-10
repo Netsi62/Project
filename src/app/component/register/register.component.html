@@ -35,6 +35,12 @@
                     <input type="tel" class="form-control custom-input" id="phoneNumber" placeholder="Enter Phone Number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
                   </div>
                   <div class="form-group">
+                    <label for="FileImg">Document</label>
+                    <img [src]="imgSrc" alt="image post" class="form-control img-fluid">
+                    <input type="file" placeholder="doc" class="form-control" accept="image/*" name="FileImg" [(ngModel)]="FileImg" (change)="onChange($event)">
+
+                  </div>
+                  <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control custom-input" id="email" placeholder="Enter Email" [(ngModel)]="email" name="email" required>
                   </div>
@@ -46,8 +52,13 @@
                     <label for="emergencyContact">Emergency Contact Information</label>
                     <textarea class="form-control custom-input" id="emergencyContact" rows="3" placeholder="Emergency Contact Information" [(ngModel)]="emergencyContact" name="emergencyContact" required></textarea>
                   </div>
+                  <div>
+                    <button type="submit" class="btn btn-primary m-3"(click)="adduser()" >Submit</button>
+                    <button type="button" class="btn btn-success" (click)="back()">Back To User Page</button>
+
+                  </div>
                   
-                  <button type="submit" class="btn btn-primary m-3"(click)="adduser()" >Submit</button>
+                 
                 </form>
             </div>
         </div>

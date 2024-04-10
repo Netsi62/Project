@@ -27,6 +27,8 @@ export class AuthService {
     city : '',
     password : '',
     StudentId : '',
+    isAccepted : false,
+    FileImg : 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNjaG9vbHxlbnwwfHwwfHx8MA%3D%3D',
   
   }
   id: string = '';
@@ -40,6 +42,7 @@ export class AuthService {
   city:string = '';
   password : string = '';
   StudentId : string = '';
+  FileImg : string = 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNjaG9vbHxlbnwwfHwwfHx8MA%3D%3D';
   
 
   constructor(
@@ -77,23 +80,39 @@ export class AuthService {
 
   async login(email: string, password: string): Promise<void> {
     try {
-    
-      const querySnapshot = await this.angularFirestore.collection('AdminUser', ref => ref.where('email', '==', email)).get().toPromise();
-  
-    
-      if (querySnapshot && !querySnapshot.empty) {
-       
+      // Check if the user is an admin
+      const adminSnapshot = await this.angularFirestore.collection('AdminUser', ref => ref.where('email', '==', email)).get().toPromise();
+      if (adminSnapshot && !adminSnapshot.empty) {
         this.router.navigate(['dashboard']);
+        return; // Exit function early if the user is an admin
+      }
+  
+      // Check if the user is registered and accepted
+      const userSnapshot = await this.angularFirestore.collection('RegisteredUser', ref => ref.where('email', '==', email)).get().toPromise();
+      if (userSnapshot && !userSnapshot.empty) {
+        const userData = userSnapshot.docs[0].data() as Register;
+        if (userData.isAccepted) {
+          // User is accepted, proceed with login
+          await this.angularFireAuth.signInWithEmailAndPassword(email, password);
+          this.router.navigate(['/user/studentCourse']);
+        } else {
+          // User is not yet accepted
+          alert(`${userData.email} is not yet accepted. Please wait for approval`)
+          console.log('User is not yet accepted. Please wait for approval.');
+          // You can display a message to the user indicating that they are not yet accepted
+        }
       } else {
-       
-        await this.angularFireAuth.signInWithEmailAndPassword(email, password);
-        this.router.navigate(['studentCourse']);
+        // User not found in registered users
+        console.log('User not found or not registered.');
+        // You can display a message to the user indicating that their email is not registered
       }
     } catch (error) {
       console.error('Error during login:', error);
-      throw error; 
+      throw error;
     }
   }
+  
+
 
   register(email: string, password: string): void {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password).then((userCredential) => {

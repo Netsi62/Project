@@ -4,6 +4,7 @@ import { Register } from 'src/app/model/register';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/auth.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,27 @@ export class RegisterService {
 
   constructor(
     private afs: AngularFirestore,
-    private authService: AuthService 
+    private authService: AuthService,
+    private storage : AngularFireStorage 
   ) { }
+
+
+  UploadImg(selectedImg: any, user: any){
+    const Filepath = `RegisteredUser/${Date.now()}`;
+    console.log(Filepath);
+
+    this.storage.upload(Filepath, selectedImg).then(() => {
+      console.log('add successfully');
+
+      this.storage.ref(Filepath).getDownloadURL().subscribe(URL => {
+        user.FileImg = URL
+        console.log(user);
+
+        this.adduser(user);
+      })
+    })
+
+  }
 
   adduser(user : Register){
     user.id = this.afs.createId();
@@ -42,6 +62,8 @@ export class RegisterService {
         })
       );
   }
+
+ 
   
 
   getUserDetailsOfLoggedInUser(): Observable<Register | undefined> {

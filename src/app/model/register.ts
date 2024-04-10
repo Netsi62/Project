@@ -10,5 +10,7 @@ export interface Register {
   city:string;
   password : string;
   StudentId : string ;
+  isAccepted : boolean;
+  FileImg : string;
   
 }

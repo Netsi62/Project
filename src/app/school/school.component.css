@@ -1,0 +1,11 @@
+.school{
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+.card{
+    border: none;
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 33px -10px rgba(18, 10, 8, 0.3);
+    cursor: pointer;
+}
