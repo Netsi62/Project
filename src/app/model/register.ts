@@ -11,5 +11,6 @@ export interface Register {
   password : string;
   StudentId : string ;
   isAccepted : boolean;
+  FileImg : string;
   
 }

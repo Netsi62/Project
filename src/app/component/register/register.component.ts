@@ -26,6 +26,7 @@ export class RegisterComponent {
     city : '',
     StudentId : '',
     isAccepted : false,
+    FileImg : 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNjaG9vbHxlbnwwfHwwfHx8MA%3D%3D'
   };
 
     id : string ='';
@@ -38,7 +39,10 @@ export class RegisterComponent {
     phoneNumber : string =  '';
     emergencyContact : string = '';
     city : string = '';
+    FileImg : string = ''
     StudentId : string ='';
+    selectedImg: any;
+    imgSrc : any = './assets/placeholder.png';
 
   constructor(private auth: AuthService, private data: RegisterService, private router : Router) {}
 
@@ -59,7 +63,7 @@ export class RegisterComponent {
       alert('please add the emergency contact');
     }
 
-    // Generate a unique student ID
+    
     const studentId = this.generateStudentId();
     this.userObj.StudentId = studentId;
 
@@ -72,9 +76,11 @@ export class RegisterComponent {
     this.userObj.phoneNumber = this.phoneNumber;
     this.userObj.emergencyContact = this.emergencyContact;
     this.userObj.city = this.city;
+    this.userObj.FileImg = this.FileImg
 
-    this.data.adduser(this.userObj);
+    this.data.UploadImg(this.selectedImg, this.userObj);
     this.auth.register(this.email, this.password);
+    this.imgSrc =  './assets/placeholder.png';
 
     this.clearInputFields();
   }
@@ -96,6 +102,14 @@ export class RegisterComponent {
     console.log(this.fullName)
     return studentId;
     
+}
+onChange(event: any) {
+  const reader = new FileReader();
+  reader.onload = (e: any) => {
+    this.imgSrc = e.target.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+  this.selectedImg = event.target.files[0];
 }
 
 

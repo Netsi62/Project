@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
     this.data.getAllUser().subscribe(
       (res: any[]) => {
         this.userList = res.map((e) => {
-          const data = e.payload.doc.data();
+          const data = e.payload.doc.data() ;
           data.id = e.payload.doc.id;
           return data;
         });

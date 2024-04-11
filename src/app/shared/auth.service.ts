@@ -28,6 +28,7 @@ export class AuthService {
     password : '',
     StudentId : '',
     isAccepted : false,
+    FileImg : 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNjaG9vbHxlbnwwfHwwfHx8MA%3D%3D',
   
   }
   id: string = '';
@@ -41,6 +42,7 @@ export class AuthService {
   city:string = '';
   password : string = '';
   StudentId : string = '';
+  FileImg : string = 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNjaG9vbHxlbnwwfHwwfHx8MA%3D%3D';
   
 
   constructor(

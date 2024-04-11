@@ -9,7 +9,7 @@ export class ListService {
   constructor(private afs : AngularFirestore) { }
 
   getAllUser(){
-    return this.afs.collection('/RegisteredUser').snapshotChanges();
+    return this.afs.collection('RegisteredUser').snapshotChanges();
   }
 
   markedAccepted(id : any, AcceptedData : any){
